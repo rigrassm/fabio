@@ -4,16 +4,9 @@ builds:
     env:
       - CGO_ENABLED=0
     goos:
-      - darwin
       - linux
-      - freebsd
-      - netbsd
-      - openbsd
-      - windows
     goarch:
-      - 386
       - amd64
-      - arm
     goarm:
       - 7
 
@@ -28,12 +21,3 @@ checksum:
 signs:
   -
     artifacts: checksum
-
-dockers:
-  -
-    dockerfile: Dockerfile-goreleaser
-    image_templates:
-      - 'fabiolb/fabio:latest'
-      - 'fabiolb/fabio:{{ .Version }}-{{ .Env.GOVERSION }}'
-    extra_files:
-      - fabio.properties
